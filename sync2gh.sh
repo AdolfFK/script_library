@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 提交并推送本地 Git 仓库目录 ($LOCAL_DIR) 中的改动。
-# 支持两种模式：整体同步 (1个参数) 和 单文件提交 (2个参数)。
+# 支持两种模式：整体同步 (1个参数) 和 单文件/目录提交 (2个参数)。
 
 # 严格模式
 set -euo pipefail
@@ -13,7 +13,7 @@ BRANCH_NAME="main"
 # --- 模式和输入检查 ---
 
 MODE=""
-TARGET_PATH=""
+TARGET_FULL_PATH="" # 用于存储目标文件/目录的绝对路径
 COMMIT_MSG=""
 
 if [[ $# -eq 1 ]]; then
@@ -23,24 +23,30 @@ if [[ $# -eq 1 ]]; then
     echo "💡 当前模式: 整体同步所有文件。"
 
 elif [[ $# -eq 2 ]]; then
-    # 模式 2: 单文件提交 (2 个参数)
+    # 模式 2: 单文件/目录提交 (2 个参数)
     MODE="SINGLE_FILE"
-    TARGET_PATH="$1"
+    TARGET_PATH_ARG="$1" # 用户输入的路径
     COMMIT_MSG="$2"
     
-    # 检查目标路径是否存在
-    if [[ ! -e "$TARGET_PATH" ]]; then
-        echo "❌ 错误: 指定的文件或目录不存在: $TARGET_PATH"
+    # 1. 检查目标路径是否存在 (相对于脚本执行目录)
+    if [[ ! -e "$TARGET_PATH_ARG" ]]; then
+        echo "❌ 错误: 指定的文件或目录不存在: $TARGET_PATH_ARG"
         exit 1
     fi
-    echo "💡 当前模式: 单文件/目录提交 -> $TARGET_PATH"
+    
+    # 2. 将目标路径解析为绝对路径。
+    # 这样在脚本切换到 $LOCAL_DIR 后，我们仍能准确引用它。
+    # 注意: realpath 命令在大多数 Unix/Linux/Mac 系统上都可用。
+    TARGET_FULL_PATH=$(realpath "$TARGET_PATH_ARG")
+    
+    echo "💡 当前模式: 单文件/目录提交 -> $TARGET_FULL_PATH"
 
 else
     # 错误用法
-    echo "❌ 用法错误: 必须提供 1 个参数 (整体同步) 或 2 个参数 (单文件提交)。"
+    echo "❌ 用法错误: 必须提供 1 个参数 (整体同步) 或 2 个参数 (单文件/目录提交)。"
     echo ""
     echo "用法 1 (整体同步): $0 \"<整体提交信息>\""
-    echo "用法 2 (单文件提交): $0 <文件/目录路径> \"<文件提交信息>\""
+    echo "用法 2 (单文件/目录提交): $0 <文件/目录路径> \"<文件提交信息>\""
     exit 1
 fi
 
@@ -68,12 +74,12 @@ git pull origin "$BRANCH_NAME"
 # 4. 暂存改动
 echo "📦 正在暂存改动..."
 if [[ "$MODE" == "BULK" ]]; then
-    # 暂存所有（新增、修改、删除）
+    # 整体同步模式：暂存所有
     git add -A .
 elif [[ "$MODE" == "SINGLE_FILE" ]]; then
-    # 仅暂存指定的文件/目录
-    # 注意: TARGET_PATH 必须是绝对路径，或相对于脚本运行目录的路径
-    git add -A "$TARGET_PATH"
+    # 单文件/目录模式：
+    # git add -A <目录路径> 会递归地暂存目录及其所有内容（包括新增、修改和删除）。
+    git add -A "$TARGET_FULL_PATH"
 fi
 
 # 5. 检查是否有实际的暂存改动
