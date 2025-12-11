@@ -1,11 +1,12 @@
 #!/usr/bin/env perl
 #==============================================================================
-# 脚本名： demo.pl
-# 功能：  一句话描述
-# 作者：  adolf1
-# 创建：  2025-06-01
-# 更新：  2025-06-10  adolf1  增加 xxx 功能
-# 依赖：  Perl≥5.30 Getopt::Long
-# 用法：  perl demo.pl -i in.txt -o out.txt
-# 仓库：  https://github.com/AdolfFK/script_library
+# 脚本名:  demo.pl
+# 功能:   一句话描述
+# 作者:   adolf1
+# 邮箱:   wangjyafk@126.com
+# 创建:   2025-06-01
+# 更新:   2025-06-10  adolf1  增加 xxx 功能
+# 依赖:   Perl≥5.30 Getopt::Long
+# 用法:   perl demo.pl -i in.txt -o out.txt
+# 仓库:   https://github.com/AdolfFK/script_library
 #==============================================================================

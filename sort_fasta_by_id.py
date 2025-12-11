@@ -3,12 +3,13 @@
 """
 ==============================================================================
 脚本名：sort_fasta_by_id.py
-功能：  按序列ID对FASTA文件进行排序，并按标准格式输出（每行60字符）
-作者：  adolf <wangjyafk@126.com>
-创建：  2025-06-01
-更新：  2025-12-09  adolf  改用 argparse 长参数，优化输出格式与健壮性
-依赖：  Python ≥ 3.6（仅标准库）
-用法：
+功能: 按序列ID对FASTA文件进行排序，并按标准格式输出,默认每行60字符
+作者: adolf
+邮箱: wangjyafk@126.com
+创建: 2025-06-01
+更新: 2025-12-09  adolf  改用 argparse 长参数，优化输出格式与健壮性
+依赖: Python ≥ 3.6（仅标准库）
+用法: 
     python sort_fasta_by_id.py --input input.fasta --output sorted.fasta
     python sort_fasta_by_id.py -i input.fasta -o sorted.fasta
     
@@ -20,7 +21,7 @@
 
     # 自定义每行80字符
     python sort_fasta_by_id.py -i input.fasta -o sorted.fasta --wrap-length 80
-仓库：  https://github.com/AdolfFK/script_library
+仓库: https://github.com/AdolfFK/script_library
 ==============================================================================
 """
 
