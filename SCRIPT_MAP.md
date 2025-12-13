@@ -1,6 +1,7 @@
 | 脚本 | 功能 | 更新日期 |
 |------|------|----------|
 | map_generator.sh | 递归扫描子目录，生成 SCRIPT_MAP.md | 2025-12-09 |
+| run_cdr_genotype.py | 一键式抗体 CDR  Germline 分析工具（AbNumber 提取 CDR, ANARCI 基因型分配,结果合并） | 2025-12-13 |
 | sort_fasta_universal.py | 对 FASTA 文件多维度排序（ID 字母、ID 数字、序列长度、正/反序） | 2025-12-10 |
 | sort_fasta_by_id.py | 按序列ID对FASTA文件进行排序，并按标准格式输出,默认每行60字符 | 2025-12-09 |
-| sync2gh.sh | 提交并推送本地 Git 仓库目录 ($LOCAL_DIR) 中的改动，支持两种模式：整体同步 (1个参数) 和 单文件/目录提交 (2个参数) | 2025-12-09 |
+| sync2gh.sh | 极简版——永远向 main 分支提交并推送；版本管理完全由用户自行处理。 | 2025-12-13 |
