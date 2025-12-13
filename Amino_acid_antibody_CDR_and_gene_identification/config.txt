@@ -1,0 +1,9 @@
+# 在你的 biosoft_env 或 bioinformaticsSoft 环境中执行
+conda activate biosoft_env        # CentOS
+# 或
+conda activate bioinformaticsSoft # macOS
+
+pip install abnumber biopython
+conda install -c conda-forge anarci    # 推荐方式，最稳定
+# 或者用 pip（也行）
+# pip install anarci
