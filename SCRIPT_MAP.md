@@ -5,3 +5,5 @@
 | ./ | sort_fasta_universal.py | 对 FASTA 文件多维度排序（ID 字母、ID 数字、序列长度、正/反序） | 2025-12-10 |
 | ./ | sort_fasta_by_id.py | 按序列ID对FASTA文件进行排序，并按标准格式输出,默认每行60字符 | 2025-12-09 |
 | ./ | sync2gh.sh | 极简版——永远向 main 分支提交并推送；版本管理完全由用户自行处理。 | 2025-12-13 |
+| ./Comparative_annotation_of_two_transcriptomes | do_compare.R | compare_enrichment.R脚本的运行样例 | 2025-12-14 |
+| ./Comparative_annotation_of_two_transcriptomes | compare_enrichment.R | 脚本比较两次转录组分析的结果文件，输出其中的差异 | 2025-12-14 |
