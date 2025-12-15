@@ -1,5 +1,10 @@
 | 目录 | 脚本 | 功能 | 更新日期 |
 |------|------|------|----------|
+| ./ | fasta_tool.py | 该脚本是一个功能全面的FASTA序列处理工具，支持按ID提取/剔除、长度过滤、去重、格式标准化、序列变换（反向互补、大小写、子序列）、碱基统计及合法性验证等 | 2025-12-14 |
+| ./ | dusub_submission.sh | Batch-submit every *.sh script under <scripts_dir> via nohup. | 2025-12-15 |
+| ./Single_cell_sequence | run_MultiSamples.V5_gpt_v3.R | 单细胞的第一步脚本，处理cellranger的结果文件，可以做分组。结果最好还是人工审核一下。把图上的点变的更小 | 2025-12-15 |
+| ./Single_cell_sequence | generate_batch_script.py | 这个脚本用来批量生成单细胞初步的脚本 | 2025-06-10 |
+| ./Single_cell_sequence | run_MultiSamples.V5_gpt_v2.R | 单细胞的第一步脚本，处理cellranger的结果文件，可以做分组。结果最好还是人工审核一下 | 2025-12-15 |
 | ./ | map_generator.sh | 递归扫描子目录，生成 SCRIPT_MAP.md（含目录列） | 2025-12-14 |
 | ./Amino_acid_antibody_CDR_and_gene_identification | run_cdr_genotype.py | 一键式抗体 CDR  Germline 分析工具（AbNumber 提取 CDR, ANARCI 基因型分配,结果合并） | 2025-12-13 |
 | ./ | sort_fasta_universal.py | 对 FASTA 文件多维度排序（ID 字母、ID 数字、序列长度、正/反序） | 2025-12-10 |
