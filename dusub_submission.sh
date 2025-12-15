@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #==============================================================================
 # 脚本名: dusub_submission.sh
-# 功能:  Batch-submit every *.sh script under <scripts_dir> via nohup.
+# 功能:  批量通过 nohup 提交 <scripts_dir> 目录下的所有 .sh 脚本
 # 作者:  adolf1
 # 邮箱:  wangjyafk@126.com
 # 创建:  2025-06-01
